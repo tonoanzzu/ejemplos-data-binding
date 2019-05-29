@@ -1,0 +1,43 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./segundo-componente.html">
+<link rel="import" href="./primer-componente.html">
+
+<dom-module id="contenedor-componentes">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    Aqui debe aparecer-->[[valorSumaComponente1]]<-- algo
+    <primer-componente operador1="20" operador2="50" suma="{{valorSumaComponente1}}"></primer-componente>
+    <segundo-componente operador1="[[valorSumaComponente1]]" operador2="2"></segundo-componente>
+
+  </template>
+
+  <script>
+    /**
+     * `contenedor-componentes`
+     * primer componente
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ContenedorComponentes extends Polymer.Element {
+      static get is() {
+        return 'contenedor-componentes';
+      }
+
+      static get properties() {
+        return {
+          valorSumaComponente1: {
+            type: Number
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ContenedorComponentes.is, ContenedorComponentes);
+  </script>
+</dom-module>
