@@ -1,0 +1,44 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="componente-division">
+    <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Valor de division {{division}}</h2>
+  </template>
+
+    <script>
+        /**
+         * `componente-division`
+         * operaciones basicas
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class ComponenteDivision extends Polymer.Element {
+            static get is() {
+                return 'componente-division';
+            }
+            static get properties() {
+                return {
+                    division: {
+                        type: Number,
+                        computed: '_getDivision(operador1, operador2)',
+                        readOnly: true
+                    }
+                };
+            }
+
+            _getDivision(operador1, operador2) {
+                return operador1 / operador2;
+            }
+
+        }
+
+        window.customElements.define(ComponenteDivision.is, ComponenteDivision);
+    </script>
+</dom-module>

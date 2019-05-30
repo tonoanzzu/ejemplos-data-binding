@@ -1,0 +1,67 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="suma-componente">
+    <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <p>Suma componente</p>
+    <p>Valor de suma {{suma}}</p>
+  </template>
+
+    <script>
+        /**
+         * `suma-componente`
+         * suma componente
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class SumaComponente extends Polymer.Element {
+            static get is() {
+                return 'suma-componente';
+            }
+
+            static get properties() {
+                return {
+                    operador1: {
+                        type: Number,
+                        value: 10,
+                        reflectToAttribute: true
+                    },
+                    operador2: {
+                        type: Number,
+                        observer: '_infinito',
+                        reflectToAttribute: true
+                    },
+                    suma: {
+                        type: Number,
+                        computed: '_getSuma(operador1, operador2)',
+                        notify: true
+                    }
+
+                };
+            }
+
+            // Declaración de los observers Complejos
+            /* static get observers() {
+              return ['_getTotal(suma, resta, multiplicacion, division), _infinito()']
+            } */
+
+            // Complejo
+
+            _getSuma(operador1, operador2) {
+                console.log('ASDASDASDA', operador1, operador2);
+                return operador1 + operador2;
+            }
+
+
+
+        }
+
+        window.customElements.define(SumaComponente.is, SumaComponente);
+    </script>
+</dom-module>
